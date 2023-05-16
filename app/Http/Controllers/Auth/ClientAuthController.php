@@ -40,7 +40,7 @@ class ClientAuthController extends Controller
             Auth::guard('client')->attempt(['username' => $request->identifier, 'password' => $request->password])
         ) {
             // Authentication was successful...
-            return redirect()->route('panel');
+            return redirect()->route('client.panel');
         } else {
             return redirect()->route('client.login')->with('fail', 'Incorrect credentials');
         }

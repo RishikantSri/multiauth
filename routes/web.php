@@ -21,15 +21,20 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
-Route::get('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
+Route::post('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
 Route::post('/admin/logout', [AdminAuthController::class, 'logoutAdmin'])->name('admin.logout');
+Route::get('/admin/panel', [AdminPagesController::class, 'panel_home'])->name('admin.panel')->middleware('auth:admin');
 
 
 Route::get('/manager/login', [ManagerAuthController::class, 'login'])->name('manager.login');
-Route::get('/manager/login', [ManagerAuthController::class, 'store'])->name('manager.login.store');
+Route::post('/manager/login', [ManagerAuthController::class, 'store'])->name('manager.login.store');
 Route::post('/manager/logout', [ManagerAuthController::class, 'logoutManager'])->name('manager.logout');
+Route::get('/manager/panel', [ManagerPagesController::class, 'panel_home'])->name('manager.panel')->middleware('auth:manager');
 
 
 Route::get('/client/login', [ClientAuthController::class, 'login'])->name('client.login');
-Route::get('/client/login', [ClientAuthController::class, 'store'])->name('client.login.store');
+Route::post('/client/login', [ClientAuthController::class, 'store'])->name('client.login.store');
 Route::post('/client/logout', [ClientAuthController::class, 'logoutClient'])->name('client.logout');
+Route::get('/client/panel', [ClientPagesController::class, 'panel_home'])->name('client.panel')->middleware('auth:client');
+
+
