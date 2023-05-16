@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\ClientAuthController;
 use App\Http\Controllers\Auth\ManagerAuthController;
+use App\Http\Controllers\ManagerPagesController;
 use Illuminate\Support\Facades\Route;
 
 /*

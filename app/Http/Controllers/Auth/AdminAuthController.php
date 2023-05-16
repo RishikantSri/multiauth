@@ -38,7 +38,7 @@ class AdminAuthController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->identifier, 'password' => $request->password])|| 
            Auth::guard('admin')->attempt(['username' => $request->identifier, 'password' => $request->password])) {
                 // Authentication was successful...
-                return redirect()->route('panel');
+                return redirect()->route('admin.panel');
         }
     else{
         return redirect()->route('admin.login')->with('fail','Incorrect credentials');

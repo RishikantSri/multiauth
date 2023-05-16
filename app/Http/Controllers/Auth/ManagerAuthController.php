@@ -38,7 +38,7 @@ class ManagerAuthController extends Controller
         if (Auth::guard('manager')->attempt(['email' => $request->identifier, 'password' => $request->password])|| 
            Auth::guard('manager')->attempt(['username' => $request->identifier, 'password' => $request->password])) {
                 // Authentication was successful...
-                return redirect()->route('panel');
+                return redirect()->route('manager.panel');
         }
     else{
         return redirect()->route('manager.login')->with('fail','Incorrect credentials');
