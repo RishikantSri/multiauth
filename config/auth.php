@@ -18,6 +18,23 @@ return [
         'passwords' => 'users',
     ],
 
+    'admin' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin\Admin::class,
+    ],
+
+    'manager' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Manager\Manager::class,
+    ],
+
+    'client' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Client\Client::class,
+    ],
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -39,6 +56,18 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
         ],
     ],
 
@@ -63,6 +92,21 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'admins'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Admin\Admin::class,
+        ],
+
+        'managers'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Manager\Manager::class,
+        ],
+
+        'clients'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Client\Client::class,
         ],
 
         // 'users' => [
@@ -90,6 +134,24 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Admin\Admin::class,
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'managers'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Manager\Manager::class,
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'clients'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Client\Client::class,
             'expire' => 60,
             'throttle' => 60,
         ],
